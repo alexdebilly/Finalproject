@@ -24,9 +24,8 @@ app.layout = html.Div(children=[
     dcc.Dropdown(
         id='site-dropdown',
         options=[
-            {'label': 'All Sites', 'value': 'ALL'},
-            [{'label': site, 'value': site} for site in spacex_df['Launch Site'].unique()]
-        ],
+            {'label': 'All Sites', 'value': 'ALL'}
+        ] + [{'label': site, 'value': site} for site in spacex_df['Launch Site'].unique()],
         value='ALL',
         placeholder="Select a Launch Site",
         searchable=True
@@ -113,4 +112,3 @@ def get_scatter_plot(entered_site, payload_range):
 # Run the app
 if __name__ == '__main__':
     app.run_server(debug=True, port=8051)
-
